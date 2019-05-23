@@ -1,0 +1,80 @@
+﻿//var counter = 0;
+
+// var increaseCounter = function(){
+//   counter++;
+// }
+
+// var printCounter = function(){
+//   console.log(counter);
+// }
+
+// printCounter();
+// increaseCounter();
+// increaseCounter();
+// printCounter();
+
+// //Local and global variables
+
+// var number = 0;
+
+// var counter = function(){
+//   var number = 5;
+//   console.log(number);
+// }
+// //counter();
+// console.log(number);
+
+// //This is anonimous self-triggered funcion
+// (function(){
+//   var number = 5;
+//   console.log(number);
+// }())
+
+// console.log(number); //Won't show number because number is a local variable here.
+
+var counter = (function() {
+  //Private variables
+  var _number;
+
+  //Private methods
+  var _checkPositive = function(x) {
+    if (x < 0) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  var setNumber = function(x) {
+    if (_checkPositive(x)) {
+      _number = x;
+    } else {
+      console.log("Wrong input");
+    }
+  };
+
+  var increaseCounter = function() {
+    _number++;
+  };
+
+  var decreaseCounter = function() {
+    _number--;
+  };
+
+  var printCounter = function() {
+    console.log(_number);
+  };
+
+  return {
+    setNumber,
+    increaseCounter,
+    decreaseCounter,
+    printCounter
+  };
+})();
+
+counter.setNumber(55);
+counter.printCounter();
+counter.increaseCounter();
+counter.increaseCounter();
+counter.printCounter();
